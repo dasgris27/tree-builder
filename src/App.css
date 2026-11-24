@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+:root {
+    color-scheme: light dark;
+}
+
 @theme {
     --color-base-50: var(--color-mist-50);
     --color-base-100: var(--color-mist-100);

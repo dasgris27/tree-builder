@@ -2,6 +2,7 @@ import type {Dispatch, SetStateAction} from "react";
 import {createTreeElement, type TreeElement} from "../types/Elements";
 import Dropdown from "./Dropdown";
 import {Plus, Trash} from "lucide-react";
+import InfoTooltip from "./InfoTooltip";
 
 export default function ElementTreeSegment({
     rootElt,
@@ -102,7 +103,10 @@ export default function ElementTreeSegment({
                 <div
                     className={`${elt === rootElt || parentElt?.groupData.eltsPicked === "all" ? "hidden" : "flex"} items-center`}
                 >
-                    <div className="grow">Weight</div>
+                    <div className="grow flex gap-2 items-center">
+                        Weight
+                        <InfoTooltip description="Probability of being selected relative to other elements in pool. Must be a positive integer" />
+                    </div>
                     <input
                         className="bg-base-100 dark:bg-base-900 border border-base-300 dark:border-base-700 px-2 py-1 rounded-md hover:border-base-400 dark:hover:border-base-600 focus:border-accent-500 dark:focus:border-accent-800 focus:outline-none"
                         defaultValue={elt.weight}
@@ -120,7 +124,9 @@ export default function ElementTreeSegment({
                     />
                 </div>
                 <div className="flex items-center">
-                    <div className="grow">Type</div>
+                    <div className="grow flex gap-2 items-center">
+                        Type
+                    </div>
                     <Dropdown
                         options={{
                             group: "Group",
@@ -139,7 +145,9 @@ export default function ElementTreeSegment({
                 {elt.type === "group" ? (
                     <>
                         <div className="flex items-center">
-                            <div className="grow">Elements Picked</div>
+                            <div className="grow flex gap-2 items-center">
+                                Elements Picked
+                            </div>
                             <Dropdown
                                 options={{
                                     one: "One",
@@ -162,7 +170,7 @@ export default function ElementTreeSegment({
                         <div
                             className={`flex items-center ${elt.groupData.eltsPicked === "constant" ? "" : "hidden"}`}
                         >
-                            <div className="grow">Elements Constant</div>
+                            <div className="grow flex gap-2 items-center">Elements Constant</div>
                             <input
                                 className="bg-base-100 dark:bg-base-900 border border-base-300 dark:border-base-700 px-2 py-1 rounded-md hover:border-base-400 dark:hover:border-base-600 focus:border-accent-500 dark:focus:border-accent-800 focus:outline-none"
                                 defaultValue={elt.groupData.eltsConst}
@@ -183,7 +191,7 @@ export default function ElementTreeSegment({
                         <div
                             className={`flex items-center ${["linear", "triangular"].includes(elt.groupData.eltsPicked) ? "" : "hidden"}`}
                         >
-                            <div className="grow">Elements Minimum</div>
+                            <div className="grow flex gap-2 items-center">Elements Minimum</div>
                             <input
                                 className="bg-base-100 dark:bg-base-900 border border-base-300 dark:border-base-700 px-2 py-1 rounded-md hover:border-base-400 dark:hover:border-base-600 focus:border-accent-500 dark:focus:border-accent-800 focus:outline-none"
                                 defaultValue={elt.groupData.eltsMin}
@@ -204,7 +212,7 @@ export default function ElementTreeSegment({
                         <div
                             className={`flex items-center ${["linear", "triangular"].includes(elt.groupData.eltsPicked) ? "" : "hidden"}`}
                         >
-                            <div className="grow">Elements Maximum</div>
+                            <div className="grow flex gap-2 items-center">Elements Maximum</div>
                             <input
                                 className="bg-base-100 dark:bg-base-900 border border-base-300 dark:border-base-700 px-2 py-1 rounded-md hover:border-base-400 dark:hover:border-base-600 focus:border-accent-500 dark:focus:border-accent-800 focus:outline-none"
                                 defaultValue={elt.groupData.eltsMax}
@@ -223,7 +231,7 @@ export default function ElementTreeSegment({
                             />
                         </div>
                         <div className="flex flex-col mt-1">
-                            <div>Element Pool</div>
+                            <div className="flex gap-2 items-center">Element Pool</div>
                             <div
                                 className={`bg-base-100 dark:bg-base-900 p-2 rounded-md border border-base-300 dark:border-base-700 ${elt.groupData.eltPool.length === 0 ? "hidden" : "flex"} flex-col gap-2 mt-1`}
                             >
@@ -264,7 +272,7 @@ export default function ElementTreeSegment({
                 ) : elt.type === "branch" ? (
                     <>
                         <div className="flex items-center">
-                            <div className="grow">Scale</div>
+                            <div className="grow flex gap-2 items-center">Scale</div>
                             <input
                                 className="bg-base-100 dark:bg-base-900 border border-base-300 dark:border-base-700 px-2 py-1 rounded-md hover:border-base-400 dark:hover:border-base-600 focus:border-accent-500 dark:focus:border-accent-800 focus:outline-none"
                                 defaultValue={elt.branchData.scale}
@@ -283,7 +291,7 @@ export default function ElementTreeSegment({
                             />
                         </div>
                         <div className="flex items-center gap-4">
-                            <div className="grow">Angle</div>
+                            <div className="grow flex gap-2 items-center">Angle</div>
                             <input
                                 className="bg-base-100 dark:bg-base-900 border border-base-300 dark:border-base-700 px-2 py-1 rounded-md hover:border-base-400 dark:hover:border-base-600 focus:border-accent-500 dark:focus:border-accent-800 focus:outline-none"
                                 defaultValue={elt.branchData.angle}

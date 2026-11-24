@@ -2,6 +2,7 @@ import {useState, type Dispatch, type SetStateAction} from "react";
 import type {TreeElement} from "../types/Elements";
 import ElementTree from "./ElementTree";
 import {ArrowRight} from "lucide-react";
+import InfoTooltip from "./InfoTooltip";
 
 export default function TreeEditor({
     displayedRootElt,
@@ -29,7 +30,10 @@ export default function TreeEditor({
             </div>
             <div className="flex flex-col gap-2 px-2">
                 <div className="flex items-center gap-4">
-                    <div className="grow">Recursions</div>
+                    <div className="grow flex gap-2 items-center">
+                        Recursions
+                        <InfoTooltip description="How deep the tree goes. Must be a positive integer" />
+                    </div>
                     <input
                         className="bg-base-100 dark:bg-base-900 border border-base-300 dark:border-base-700 px-2 py-1 rounded-md hover:border-base-400 dark:hover:border-base-600 focus:border-accent-500 dark:focus:border-accent-800 focus:outline-none"
                         defaultValue={numRecursions}
