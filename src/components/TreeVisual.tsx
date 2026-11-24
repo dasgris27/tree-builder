@@ -208,56 +208,56 @@ export default function TreeVisual({
         );
         const speciesColors = [
             {
-                wood: "yellow-900",
-                leaves: "green-600"
+                wood: "var(--color-yellow-900)",
+                leaves: "var(--color-green-600)"
             },
             {
-                wood: "amber-950",
-                leaves: "emerald-900"
+                wood: "var(--color-amber-950)",
+                leaves: "var(--color-emerald-900)"
             },
             {
-                wood: "yellow-100",
-                leaves: "emerald-700"
+                wood: "var(--color-yellow-100)",
+                leaves: "var(--color-emerald-700)"
             },
             {
-                wood: "yellow-700",
-                leaves: "green-500"
+                wood: "var(--color-yellow-700)",
+                leaves: "var(--color-green-500)"
             },
             {
-                wood: "stone-600",
-                leaves: "lime-600"
+                wood: "var(--color-stone-600)",
+                leaves: "var(--color-lime-600)"
             },
             {
-                wood: "yellow-950",
-                leaves: "green-800"
+                wood: "var(--color-yellow-950)",
+                leaves: "var(--color-green-800)"
             },
             {
-                wood: "amber-950",
-                leaves: "white"
+                wood: "var(--color-amber-950)",
+                leaves: "var(--color-white)"
             },
             {
-                wood: "yellow-950",
-                leaves: "lime-800"
+                wood: "var(--color-yellow-950)",
+                leaves: "var(--color-lime-800)"
             },
             {
-                wood: "mauve-800",
-                leaves: "pink-400"
+                wood: "var(--color-mauve-800)",
+                leaves: "var(--color-pink-400)"
             },
             {
-                wood: "stone-800",
-                leaves: "stone-400"
+                wood: "var(--color-stone-800)",
+                leaves: "var(--color-stone-400)"
             },
             {
-                wood: "yellow-900",
-                leaves: "red-600"
+                wood: "var(--color-yellow-900)",
+                leaves: "var(--color-red-600)"
             },
             {
-                wood: "yellow-900",
-                leaves: "orange-500"
+                wood: "var(--color-yellow-900)",
+                leaves: "var(--color-orange-500)"
             },
             {
-                wood: "yellow-900",
-                leaves: "amber-500"
+                wood: "var(--color-yellow-900)",
+                leaves: "var(--color-amber-500)"
             }
         ];
         const speciesNum = true ? Math.floor(Math.random() * speciesColors.length) : 2;
@@ -274,7 +274,7 @@ export default function TreeVisual({
                         x2={0}
                         y2={0}
                         style={{
-                            stroke: `var(--color-${speciesColors[speciesNum].wood})`
+                            stroke: `${speciesColors[speciesNum].wood}`
                         }}
                         strokeWidth={0.1}
                         strokeLinecap="square"
@@ -290,7 +290,7 @@ export default function TreeVisual({
                                     y2={endPos[1]}
                                     // className="stroke-green-500 dark:stroke-emerald-800"
                                     style={{
-                                        stroke: `color-mix(in srgb, var(--color-${speciesColors[speciesNum].wood}), var(--color-${speciesColors[speciesNum].leaves}) ${numRecursions === 1 ? 0 : 100 * Math.pow(1 - (recursionLevel - 1) / (numRecursions - 1), 2)}%)`
+                                        stroke: `color-mix(in srgb, ${speciesColors[speciesNum].wood}, ${speciesColors[speciesNum].leaves} ${numRecursions === 1 ? 0 : 100 * Math.pow(1 - (recursionLevel - 1) / (numRecursions - 1), 2)}%)`
                                     }}
                                     opacity={1}
                                     // className={"stroke-[#7A9A4E]"}
