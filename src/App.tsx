@@ -10,9 +10,31 @@ export default function App() {
         createTreeElement({
             type: "group",
             groupData: {
+                eltsPicked: "linear",
+                eltsMin: 2,
+                eltsMax: 3,
                 eltPool: [
-                    createTreeElement({type: "branch"}),
-                    createTreeElement({type: "branch"})
+                    createTreeElement({
+                        type: "branch",
+                        branchData: {
+                            scale: 0.68,
+                            angle: -33
+                        }
+                    }),
+                    createTreeElement({
+                        type: "branch",
+                        branchData: {
+                            scale: 0.71,
+                            angle: 5
+                        }
+                    }),
+                    createTreeElement({
+                        type: "branch",
+                        branchData: {
+                            scale: 0.64,
+                            angle: 39
+                        }
+                    })
                 ]
             }
         })
