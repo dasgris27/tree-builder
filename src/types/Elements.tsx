@@ -1,5 +1,3 @@
-import { useState, type Dispatch, type SetStateAction } from "react";
-
 export interface TreeElementOpts {
     weight?: number;
     type?: "group" | "branch";

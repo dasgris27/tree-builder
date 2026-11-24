@@ -1,15 +1,17 @@
-import {ChevronDown, ChevronUp} from "lucide-react";
+import {ChevronDown} from "lucide-react";
 import {useEffect, useRef, useState} from "react";
 
-export default function Dropdown({
+interface DropdownProps<T extends Record<string, string>> {
+    options: T;
+    defaultOption: keyof T;
+    onChange: (option: keyof T) => void;
+}
+
+export default function Dropdown<T extends Record<string, string>>({
     options,
     defaultOption,
     onChange
-}: {
-    options: {[key: string]: string};
-    defaultOption: string;
-    onChange: (option: string) => void;
-}) {
+}: DropdownProps<T>) {
     const [selectedOption, setSelectedOption] = useState(defaultOption);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -39,14 +41,14 @@ export default function Dropdown({
             <div
                 className={`absolute right-0 top-full mt-1 flex flex-col bg-base-100 dark:bg-base-900 rounded-md overflow-hidden border border-base-300 dark:border-base-700 z-10 w-max ${dropdownOpen ? "" : "hidden"}`}
             >
-                {Object.entries(options).map(([id, name], i) => (
+                {(Object.entries(options) as [keyof T, string][]).map(([id, name], i) => (
                     <button
                         key={i}
                         className={`px-2 py-1 flex gap-1 w-full text-start cursor-pointer ${id === selectedOption ? "bg-accent-500 dark:bg-accent-900" : "hover:bg-base-300 dark:hover:bg-base-700"}`}
                         onClick={() => {
                             setDropdownOpen(false);
-                            setSelectedOption(id);
-                            onChange(id);
+                            setSelectedOption(id as keyof T);
+                            onChange(id as keyof T);
                         }}
                     >
                         {name}

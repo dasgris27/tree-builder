@@ -1,8 +1,6 @@
 import {useState} from "react";
 import "./App.css";
-import {ArrowRight, Plus, Trash, X} from "lucide-react";
 import {type TreeElement, createTreeElement} from "./types/Elements";
-import ElementTree from "./components/ElementTree";
 import TreeVisual from "./components/TreeVisual";
 import TreeEditor from "./components/TreeEditor";
 
